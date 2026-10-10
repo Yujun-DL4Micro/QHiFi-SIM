@@ -1,0 +1,33 @@
+# QHiFi-SIM GUI dependencies.
+# This file is for the GUI only.
+# Training, patch-wise testing, full-image inference, and standalone analysis
+# dependencies are listed in QHiFi-SIM main/requirements.txt.
+#
+# CUDA / CuPy:
+#   cupy-cuda12x is for CUDA 12.x.
+#   Replace it with cupy-cuda11x if your environment uses CUDA 11.x.
+#   If CuPy is managed by conda, install the matching conda package instead.
+#
+# PyTorch:
+#   Install the PyTorch build that matches your CUDA driver and GPU.
+#   Select the correct command from:
+#     https://pytorch.org/get-started/locally/
+#
+# Qt:
+#   PyQt6 is required by the GUI and by the Matplotlib Qt backend.
+#
+# Note:
+#   numpy, cupy, and torch versions must be mutually compatible.
+#   If CuPy import fails, check the CuPy documentation for the NumPy version
+#   supported by your installed CuPy build.
+
+cupy-cuda12x==13.6.0
+matplotlib==3.10.8
+numpy==2.4.0
+PyQt6==6.10.1
+scikit-image==0.25.2
+tifffile==2025.2.18
+torch==2.9.1
+scipy==1.15.2
+pandas==2.2.3
+openpyxl==3.1.5

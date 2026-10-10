@@ -1,0 +1,33 @@
+# Conda environment for QHiFi-SIM training, testing, full-image inference,
+# lipid-droplet quantification, and standalone quantitative analysis.
+# Package versions match requirements-training.txt exactly.
+#
+# Pip users can instead run:
+#   pip install -r ../requirements-training.txt
+#
+# Create the conda environment:
+#   conda env create -f environment.yml
+# Activate:
+#   conda activate qifi-sim-main
+
+name: qifi-sim-main
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - numpy==2.4.0
+      - scipy==1.15.2
+      - pandas==2.2.3
+      - openpyxl==3.1.5
+      - tifffile==2025.2.18
+      - scikit-image==0.25.2
+      - imageio==2.37.0
+      - matplotlib==3.10.8
+      - natsort==8.4.0
+      - opencv-python==4.10.0.84
+      - tensorboard==2.16.2
+      - torch==2.9.1

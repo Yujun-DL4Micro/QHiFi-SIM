@@ -1,0 +1,41 @@
+# Python caches and environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# IDE / local configuration
+.idea/
+.vscode/
+
+# Training artifacts
+runs/
+*.log
+checkpoint/
+checkpoints/
+*.pth
+*.pth.tar
+*.pt
+*.ckpt
+
+# Generated analysis and inference outputs
+Eval_results/
+Output/
+outputs/
+full_image_results/
+Quant_Analysis/
+ROI_Analysis/
+Pixel_values/
+ROI_sum_tables/
+difference_images/
+ROI_marked_images/
+test_outs/
+
+# Local / large datasets (curated public samples can be force-added if needed)
+dataset/
+dataset_QHiFi/
+
+# OS files
+.DS_Store
+Thumbs.db

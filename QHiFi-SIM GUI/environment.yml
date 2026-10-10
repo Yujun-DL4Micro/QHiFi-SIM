@@ -1,0 +1,30 @@
+# Conda environment for the QHiFi-SIM GUI.
+# Package versions match QHiFi-SIM GUI/requirements.txt exactly.
+#
+# Pip users can instead run:
+#   pip install -r requirements.txt
+#
+# Create the conda environment:
+#   conda env create -f environment.yml
+# Activate:
+#   conda activate qifi-sim-gui
+
+name: qifi-sim-gui
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - cupy-cuda12x==13.6.0
+      - matplotlib==3.10.8
+      - numpy==2.4.0
+      - PyQt6==6.10.1
+      - scikit-image==0.25.2
+      - tifffile==2025.2.18
+      - torch==2.9.1
+      - scipy==1.15.2
+      - pandas==2.2.3
+      - openpyxl==3.1.5

@@ -1,0 +1,19 @@
+# QHiFi-SIM dependencies for training, patch-wise testing,
+# full-image inference, simulation, and quantitative analysis.
+#
+# PyTorch is installed separately:
+#   https://pytorch.org/get-started/locally/
+#
+# Validated with Python 3.10.x (replace with your actual version).
+
+numpy>=1.24,<3
+scipy>=1.10,<2
+pandas>=2.0,<3
+openpyxl>=3.1,<4
+tifffile>=2023.7.10
+scikit-image>=0.21,<1
+imageio>=2.31,<3
+matplotlib>=3.7,<4
+natsort>=8.4,<9
+opencv-python>=4.8,<5
+tensorboard>=2.14,<3

@@ -1,0 +1,61 @@
+cff-version: 1.2.0
+message: "If you use QHiFi-SIM, please cite the associated work. Update this metadata if citing the journal version of record."
+title: "QHiFi-SIM"
+type: software
+repository-code: "https://github.com/Yujun-DL4Micro/QHiFi-SIM"
+license: MIT
+authors:
+  - family-names: Tang
+    given-names: Yujun
+  - family-names: Luo
+    given-names: Zewei
+  - family-names: Zhu
+    given-names: Xi
+  - family-names: Wang
+    given-names: Wenyi
+  - family-names: Ge
+    given-names: Xichuan
+  - family-names: Li
+    given-names: Meiqi
+  - family-names: Chen
+    given-names: Cong
+  - family-names: Chen
+    given-names: Tongsheng
+  - family-names: Chen
+    given-names: Ceshi
+  - family-names: Xi
+    given-names: Peng
+  - family-names: Wen
+    given-names: Gang
+preferred-citation:
+  type: article
+  title: "Physics-driven self-supervised learning for quantitative high-fidelity structured illumination microscopy"
+  authors:
+    - family-names: Tang
+      given-names: Yujun
+    - family-names: Luo
+      given-names: Zewei
+    - family-names: Zhu
+      given-names: Xi
+    - family-names: Wang
+      given-names: Wenyi
+    - family-names: Ge
+      given-names: Xichuan
+    - family-names: Li
+      given-names: Meiqi
+    - family-names: Chen
+      given-names: Cong
+    - family-names: Chen
+      given-names: Tongsheng
+    - family-names: Chen
+      given-names: Ceshi
+    - family-names: Xi
+      given-names: Peng
+    - family-names: Wen
+      given-names: Gang
+  year: 2026
+  journal: bioRxiv
+  publisher:
+    name: "Cold Spring Harbor Laboratory"
+  doi: "10.64898/2026.06.12.731778"
+  url: "https://doi.org/10.64898/2026.06.12.731778"
