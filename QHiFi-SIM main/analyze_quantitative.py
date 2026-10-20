@@ -30,13 +30,13 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 # full-image inference. The result folder is created by test_full_image.py.
 WF_DIR = Path("./data/WF")
 SIM_INPUT_DIR = Path("./data/SIM")
-RESULT_DIR = Path("./full_image_results/PSF25")
+RESULT_DIR = Path("./full_image_results")
 
 # Set to a GT folder to enable SIM/QSIM-vs-GT analysis; use None when GT is absent.
 GT_DIR: Optional[Path] = None
 
-# ROI window sizes are user-configurable here. (6, 12) reproduces the original
-# 6x6 and 12x12 ROI-sum analyses. Change these integers as needed.
+# ROI window sizes are user-configurable here. (9, 15) reproduces the original
+# 9x9 and 15x15 ROI-sum analyses. Change these integers as needed.
 ROI_SIZES = (9, 15)
 NUM_ROIS = 500
 ROI_BORDER = 30
