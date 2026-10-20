@@ -37,7 +37,7 @@ GT_DIR: Optional[Path] = None
 
 # ROI window sizes are user-configurable here. (6, 12) reproduces the original
 # 6x6 and 12x12 ROI-sum analyses. Change these integers as needed.
-ROI_SIZES = (6, 12)
+ROI_SIZES = (9, 15)
 NUM_ROIS = 500
 ROI_BORDER = 30
 BG_THRESHOLD = 0.05
