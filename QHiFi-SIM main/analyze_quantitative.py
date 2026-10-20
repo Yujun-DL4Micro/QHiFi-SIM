@@ -39,6 +39,7 @@ GT_DIR: Optional[Path] = None
 # 9x9 and 15x15 ROI-sum analyses. Change these integers as needed.
 ROI_SIZES = (9, 15)
 NUM_ROIS = 500
+
 ROI_BORDER = 30
 BG_THRESHOLD = 0.05
 MIN_FOREGROUND_RATIO = 0.8
