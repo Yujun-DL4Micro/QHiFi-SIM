@@ -89,21 +89,18 @@ class FixedConv2d(nn.Module):
 
 
 class QHiFi(nn.Module):
-    # ===== 修改区域 START：__init__ 新增 5 个消融控制参数 =====
+
     def __init__(self, in_channels=1, base_channels=16, num_blocks=6,
                  disable_ssfe=False, disable_wife=False,
                  disable_channel_attn=False, disable_spatial_attn=False,
                  disable_identity=False):
-        # ===== 修改区域 END =====
         super().__init__()
 
-        # ===== 修改区域 START：将开关保存为成员变量 =====
         self.disable_ssfe = disable_ssfe
         self.disable_wife = disable_wife
         self.disable_channel_attn = disable_channel_attn
         self.disable_spatial_attn = disable_spatial_attn
         self.disable_identity = disable_identity
-        # ===== 修改区域 END =====
 
         self.fixed_conv = FixedConv2d(stride=1)
         self.sim_feature_extractor = nn.Sequential(
@@ -122,7 +119,6 @@ class QHiFi(nn.Module):
             nn.GELU()
         )
 
-        # ===== 修改区域 START：根据 disable_channel_attn 动态构建残差块 =====
         self.residual_blocks = nn.ModuleList()
         for i in range(num_blocks):
             if i % 2 == 0 and not self.disable_channel_attn:
@@ -136,7 +132,6 @@ class QHiFi(nn.Module):
                 self.residual_blocks.append(
                     ResidualBlock(base_channels * 2, base_channels * 2)
                 )
-        # ===== 修改区域 END =====
 
         self.spatial_attention = SpatialAttention()
         self.reconstruct = nn.Sequential(
@@ -169,18 +164,14 @@ class QHiFi(nn.Module):
         identity = x_sim
         x_1 = self.fixed_conv(x_sim, psf)
 
-        # ===== 修改区域 START：SSFE 分支（可禁用） =====
         if self.disable_ssfe:
-            # 用零张量占位，保持拼接时的通道数一致
             sim_features = torch.zeros(
                 x_sim.shape[0], 16, x_sim.shape[2], x_sim.shape[3],
                 device=x_sim.device, dtype=x_sim.dtype
             )
         else:
             sim_features = self.sim_feature_extractor(x_sim)
-        # ===== 修改区域 END =====
 
-        # ===== 修改区域 START：WIFE 分支（可禁用） =====
         if self.disable_wife:
             wf_1_features = torch.zeros(
                 x_sim.shape[0], 16, x_sim.shape[2], x_sim.shape[3],
@@ -189,26 +180,21 @@ class QHiFi(nn.Module):
         else:
             wf_1 = torch.cat([x_wf, x_1], dim=1)
             wf_1_features = self.wf_aaa_feature_extractor(wf_1)
-        # ===== 修改区域 END =====
 
         combined_features = torch.cat([sim_features, wf_1_features], dim=1)
 
         for block in self.residual_blocks:
             combined_features = block(combined_features)
 
-        # ===== 修改区域 START：空间注意力（可禁用） =====
         if self.disable_spatial_attn:
             attended_features = combined_features
         else:
             attended_features = self.spatial_attention(combined_features)
-        # ===== 修改区域 END =====
 
         output = self.reconstruct(attended_features)
 
-        # ===== 修改区域 START：全局残差连接（可禁用） =====
         if not self.disable_identity:
             output = output + identity
-        # ===== 修改区域 END =====
 
         min_val = output.view(output.size(0), 1, -1).min(dim=2, keepdim=True)[0].unsqueeze(3)
         max_val = output.view(output.size(0), 1, -1).max(dim=2, keepdim=True)[0].unsqueeze(3)
